@@ -11,8 +11,11 @@ client.get('/' + analysisDBName,
     function(err, req, res, obj) {
       console.log('%j', obj);
 
-      if(obj['error']) {
+      if (obj['error']) {
         console.log('we had an error');
+        if (obj['reason']) {
+          console.log('reason: ' + obj['reason']);
+        }
       }
     });
 
