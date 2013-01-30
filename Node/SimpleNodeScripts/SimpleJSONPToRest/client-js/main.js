@@ -6,8 +6,7 @@ $(document).ready(function() {
 		
 		var ajaxDoneHandler = function(data) {
 			console.log(data);
-			//var parsedData = $.parseJson(data);
-			//$('#square').text(parsedData['msg']);
+			$('#square').text(data['msg']);
 		};
 		
 		var ajaxFailHandler = function(jqXHR, textStatus, errorThrown) {
