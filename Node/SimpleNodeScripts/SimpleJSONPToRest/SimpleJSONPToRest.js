@@ -10,11 +10,16 @@ function respond(req, res, next) {
 	/*
 	 * You can't do this.  This will trash your automatic JSONP response.
 	 */
-	//res.contentType = 'json';
-	
-	if(isNaN(req.params.num)) {
-		res.send(400, {msg:'That was not a number'});
-	}
+	//res.contentType = 'json'
+    if(isNaN(req.params.num)) {
+        next(new restify.RestError({
+            statusCode: 400,
+            restCode: 'InvalidInput',
+            body: {
+                msg:'That was not a number'
+            }
+        }));
+    }
 	else {
 		res.send(200, {msg: (req.params.num * req.params.num)});
 	}
